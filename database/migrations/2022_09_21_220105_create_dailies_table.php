@@ -11,6 +11,7 @@ class CreateDailiesTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('dailies', function (Blueprint $table) {

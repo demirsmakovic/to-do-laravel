@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
      * @return void
      */
 
+     
     protected $users = [
         [
             'name' => "Demir",

@@ -15,8 +15,7 @@ class DailyController extends Controller
 
     public function store(Request $request)
     {
-        $fields = $request->validate(
-            [
+        $fields = $request->validate([
                 'title' => 'required',
                 'description' => 'required'
             ]
