@@ -20,7 +20,7 @@ class CreateTasksTable extends Migration
             $table->foreign('list_id')->references('id')->on('dailies');
             $table->string('title'); 
             $table->text('description'); 
-            $table->date('deadline');
+            $table->timestamp('deadline');
             $table->boolean('done');
             $table->timestamps();
         });

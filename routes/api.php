@@ -26,13 +26,13 @@ Route::group(['middleware'=> 'auth:sanctum'], function(){
     Route::post('/daily/store', [DailyController::class, 'store']);
     Route::post('/daily/update/{id}', [DailyController::class, 'update']);
     Route::get('/daily/delete/{id}', [DailyController::class, 'destroy']);
-    Route::post('/daily/search', [DailyController::class, 'search']);
+    Route::post('/daily/all', [DailyController::class, 'all']);
 });
 
 //Task Group Routes
 Route::group(['middleware'=> 'auth:sanctum'], function(){
-    Route::get('/task', [TaskController::class, 'index']);
     Route::post('/task/store', [TaskController::class, 'store']);
+    Route::post('/task/all/{id}', [TaskController::class, 'all']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

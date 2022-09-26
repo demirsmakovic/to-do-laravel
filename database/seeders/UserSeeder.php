@@ -19,27 +19,32 @@ class UserSeeder extends Seeder
         [
             'name' => "Demir",
             'email' => "demir.smakovic@gmail.com",
-            'password' => "demir1234"
+            'password' => "demir1234",
+            'timezone' => "America/Jamaica"
         ],
         [
             'name' =>"Marko",
             'email' => "marko@gmail.com",
-            'password' => "demir9234"
+            'password' => "demir9234",
+            'timezone' => "Africa/Tripoli"
         ],
         [
             'name' =>"Laravel",
             'email' => "demir.laravel@gmail.com",
-            'password' => "demir1534"
+            'password' => "demir1534",
+            'timezone' => "Asia/Bahrain"
         ],
         [
             'name' =>"Neko",
             'email' => "neko@gmail.com",
-            'password' => "demir1734"
+            'password' => "demir1734",
+            'timezone' => "Europe/Belgrade"
         ],
         [
             'name' =>"Lara",
             'email' => "lara@gmail.com",
-            'password' => "demir1334"
+            'password' => "demir1334",
+            'timezone' => "Europe/Madrid"
         ],
     ];
 
@@ -50,6 +55,7 @@ class UserSeeder extends Seeder
                 'name' => $user["name"],
                 'email' => $user["email"],
                 'password' => bcrypt($user["password"]),
+                'timezone' => $user["timezone"],
 
             ]);
         }

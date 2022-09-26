@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Daily;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 
 class DailyController extends Controller
 {
-
-    //Show All Lists
-    public function index()
-    {
-        return Daily::all();
-    }
 
     //Create Daily List
     public function store(Request $request)
@@ -58,13 +55,29 @@ class DailyController extends Controller
     }
 
     //Filter by date and title
-    public function search(Request $request)
+    public function all(Request $request)
     {
-        $title=$request->title;
-        $date=$request->date;
-        $filter_result = Daily::where('title', 'like', '%'.$title.'%')
-        ->where('date', $date)
-        ->paginate(10);
+        $user_id = Auth::id();
+        $title = $request->title;
+        $date = $request->date;
+        if ($title && $date) {
+            $filter_result = Daily::where('user_id', $user_id)
+            ->where('title', 'like', '%'.$title.'%')
+            ->where('date', $date)
+            ->paginate(10);
+        }elseif ($title) {
+            $filter_result = Daily::where('user_id', $user_id)
+            ->where('title', 'like', '%'.$title.'%')
+            ->paginate(10);
+        }elseif ($date) {
+            $filter_result = Daily::where('user_id', $user_id)
+            ->where('date', $date)
+            ->paginate(10);
+        }else {
+            $filter_result = Daily::where('user_id', $user_id)
+            ->paginate(10);
+        }
+       
 
         return $filter_result;
         
