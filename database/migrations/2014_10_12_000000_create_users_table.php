@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('timezone');
+            $table->enum('timezone', ['America/Jamaica', 'Africa/Tripoli', 'Asia/Bahrain', 'Europe/Belgrade', 'Europe/Madrid']);
             $table->rememberToken();
             $table->timestamps();
         });
